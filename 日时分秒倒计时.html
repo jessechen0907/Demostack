@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span id="view"></span>
+</body>
+<script type="text/javascript">
+	window.onload=function () {
+		cd();
+	};
+	function cd(){
+		var ndat=new Date(),
+			tdat=new Date('2018/4/10,21:01:00'),
+			ldat=parseInt(tdat.getTime()-ndat.getTime()),
+			d=parseInt(ldat/(60*60*24*1000)),
+			h=parseInt(ldat/(60*60*1000)%24),
+			m=parseInt(ldat/60/1000%24),
+			s=parseInt(ldat/1000%60),
+			ms=parseInt(ldat%1000);
+		document.getElementById('view').innerHTML=d+'天'+h+'小时'+m+'分钟'+s+'秒'+ms;
+		var st=setTimeout(cd,1);
+		if(ldat<=0){
+			document.getElementById('view').innerHTML="今晚吃鸡";
+			clearInterval(st);
+		}
+		
+	}
+</script>
+</html>
