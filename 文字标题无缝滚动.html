@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字信息无缝滚动</title>
+	<style>
+		#sa{
+			margin: 20px auto;
+			border:2px solid #d9f2f3;
+			border-radius: 6px;
+			height: 180px;
+			width: 360px;
+			overflow: hidden;
+			border-top: 26px solid #d9f2f3;
+		}
+		#c1,#c2{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		#c1 li,#c2 li{
+			padding: 4px;
+			margin-left: 10px;
+			color:#666;
+		}
+	</style>
+</head>
+<body>
+	<div id='sa'>
+		<ul id="c1">
+			<li>1.制作间歇性无缝滚动效果</li>
+			<li>2.运用JavaScript实现无缝滚动效果</li>
+			<li>3.通过设定定时时间</li>
+			<li>4.了解marquee标签和属性</li>
+			<li>5.阿里D2前端技术论坛</li>
+			<li>6.掌握无缝滚动原理</li>
+			<li>7.并制作简单信息滚动效果</li>
+			<li>8.从JS到TS开发数独游戏</li>
+			<li>9.让您掌握无缝滚动和歇间性滚动的制作方法</li>
+		</ul>
+		<ul id="c2"></ul>
+	</div>
+	<script type="text/javascript">
+		function sl(){
+			var sa=document.getElementById('sa'),
+					c1=document.getElementById('c1'),
+					c2=document.getElementById('c2');
+					c2.innerHTML=c1.innerHTML;
+					if(sa.scrollTop>=c1.offsetHeight){
+						sa.scrollTop=0;
+					}else{
+						sa.scrollTop++;
+					}
+				
+				
+			}
+			var time=20,
+				ii=setInterval(sl,time);
+		sa.onmouseover=function(){
+			clearInterval(ii);
+		};
+		sa.onmouseout=function(){
+			ii=setInterval(sl,time);
+		};	
+	</script>
+</body>
+</html>
